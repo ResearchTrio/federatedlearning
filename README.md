@@ -15,6 +15,7 @@ We here implement the Federated Deep Learning architecture to demonstrate the sm
    ***
    
    ## Image Dataset Directory Structure  
+   Arrange your Training Datset in the following directory structure:  
    ![Dataset directory structure](https://github.com/ResearchTrio/federatedlearning/blob/main/dataset_directory1.png)  
    ***
    
@@ -34,7 +35,7 @@ We here implement the Federated Deep Learning architecture to demonstrate the sm
    ```
    This will start the Gunicorn servers for Device 1 ,Device 2 and Main Server
    
-   ###### Servers:
+   ##### Servers:
    * Main Server - ```http://localhost:8000/```
    * Device 1 - ```http://localhost:8001/```
    * Device 2 - ```http://localhost:8002/```
