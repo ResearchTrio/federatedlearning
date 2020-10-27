@@ -27,7 +27,7 @@ def send_status():
 
 @app.route('/sendmodel')
 def send_model():
-	file = open("/home/sarth/flask/Fedlearn-master/device2/local_model/model2.h5", 'rb')
+	file = open("/device2/local_model/model2.h5", 'rb')
 	data = {'fname':'model2.h5', 'id':'http://localhost:8002/'}
 	files = {
 		'json': ('json_data', json.dumps(data), 'application/json'),
@@ -50,7 +50,7 @@ def get_agg_model():
 		fname = fname['fname']
 		print(fname)
 
-		wfile = open("/home/sarth/flask/Fedlearn-master/device2/model_update/"+fname, 'wb')
+		wfile = open("/device2/model_update/"+fname, 'wb')
 		wfile.write(file)
 			
 		return "Model received!"
