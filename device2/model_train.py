@@ -1,17 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 13 23:55:54 2020
-
-@author: Tapan
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 13 17:08:51 2020
-
-@author: Tapan
-"""
-
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
