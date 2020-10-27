@@ -15,4 +15,6 @@ We here implement the Federated Deep Learning architecture to demonstrate the sm
    ***
    
    **Image Dataset Directory Structure**
+   ![Dataset directory structure](https://github.com/ResearchTrio/federatedlearning/blob/main/dataset_directory.png)
+
    
