@@ -26,7 +26,7 @@ def sum_scaled_weights(scaled_weight_list):
     return avg_grad
 
 def fl_average():
-    client_models_path = os.listdir("/home/sarth/flask/Fedlearn-master/secure_aggregator/client_models/")
+    client_models_path = os.listdir("/main_server/client_models/")
        
     scaled_local_weight_list = []
     
@@ -34,12 +34,9 @@ def fl_average():
         print("Loading Model...")
         print(path)
        
-        local_model = tf.keras.models.load_model("/home/sarth/flask/Fedlearn-master/secure_aggregator/client_models/"+path)
+        local_model = tf.keras.models.load_model("/main_server/client_models/"+path)
         local_model.compile(Adam(lr=.0001), loss='categorical_crossentropy', metrics=['accuracy'])
-        #test_model(local_model,test_dataset_directory)
         local_weights= local_model.get_weights()
-        
-        #scale the model weights and add to list
         scaling_factor = 1/3
         scaled_weights = scale_model_weights(local_model.get_weights(), scaling_factor)
         
@@ -66,15 +63,13 @@ def build_model(weights):
     return global_model
 
 def save_agg_model(model):
-    model.save("/home/sarth/flask/Fedlearn-master/secure_aggregator/persistent_storage/agg_model.h5")
+    model.save("/main_server/agg_model/agg_model.h5")
     print("Model written to storage!")
 
 def model_aggregation():
     weights = fl_average()
     model = build_model(weights)
     save_agg_model(model)
-
-#model_aggregation()
 
 
 
