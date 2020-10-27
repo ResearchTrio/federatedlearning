@@ -16,7 +16,7 @@ def client_status():
 	if request.method == 'POST':
 		client_port = request.json['client_id']
 		
-		with open('/home/sarth/flask/Fedlearn-master/mainserver/clients.txt', 'a+') as f:
+		with open('/main_server/clients.txt', 'a+') as f:
 			f.write('http://localhost:' + client_port + '/\n')
 
 		print(client_port)
@@ -71,7 +71,7 @@ def perform_model_aggregation():
 
 """@app.route('/send_model_secagg')
 def send_agg_to_mainserver():
-	file = open("/home/sarth/flask/Fedlearn-master/secure_aggregator/persistent_storage/agg_model.h5", 'rb')
+	file = open("/main_server/agg_model/agg_model.h5", 'rb')
 	data = {'fname':'agg_model.h5', 'id':'sec_agg'}
 	files = {
 		'json': ('json_data', json.dumps(data), 'application/json'),
@@ -94,7 +94,7 @@ def get_secagg_model():
 		cli = fname['id']+'\n'
 		fname = fname['fname']
 
-		wfile = open("/home/sarth/flask/Fedlearn-master/mainserver/agg_model/"+fname, 'wb')
+		wfile = open("/main_server/agg_model/"+fname, 'wb')
 		wfile.write(file)
 			
 		return render_template("recive.html")
