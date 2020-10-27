@@ -40,9 +40,9 @@ def send_model():
 		'model': ('model2.h5', file, 'application/octet-stream')
 	}
 	
-	req = requests.post(url='http://localhost:8003/cmodel', 
+	req = requests.post(url='http://localhost:8000/cmodel', 
 						files=files)
-	req1 = requests.post(url='http://localhost:8003/cfile', 
+	req1 = requests.post(url='http://localhost:8000/cfile', 
 						files=files)
 	return render_template("sent.html")
 
