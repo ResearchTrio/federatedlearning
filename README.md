@@ -34,9 +34,11 @@ We here implement the Federated Deep Learning architecture to demonstrate the sm
    ```
    This will start the Gunicorn servers for Device 1 ,Device 2 and Main Server
    
-   ######servers:
+   ###### Servers:
    * Main Server - ```http://localhost:8000/```
    * Device 1 - ```http://localhost:8001/```
    * Device 2 - ```http://localhost:8002/```
    
-   
+   ##### System Working
+   * First a model is trained locally on the device. Click on the ```*Model Training (Loaclly)*``` button to start model training. This button will send ```http://localhost:8001/modeltrain``` and ```http://localhost:8002/modeltrain``` requests respectively to train models locally.  
+   * Once the models are trained click on 
