@@ -1,3 +1,17 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 13 23:55:54 2020
+
+@author: Tapan
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 13 17:08:51 2020
+
+@author: Tapan
+"""
+
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
@@ -16,6 +30,7 @@ import shutil
 import random
 
 def train():
+    object_name = "object_name"	
     main_path = '/image dataset path'
     train_path = main_path+'/train'
     valid_path = main_path+'/valid'
@@ -31,7 +46,8 @@ def train():
     mobile = tf.keras.applications.mobilenet.MobileNet()
     x = mobile.layers[-6].output
     output = Dense(units=2, activation='softmax')(x)
-    model = Model(inputs=mobile.input, outputs=output)    
+    model = Model(inputs=mobile.input, outputs=output)
+    
     for layer in model.layers[:-5]:
         layer.trainable = False
     
@@ -45,6 +61,6 @@ def train():
               verbose=1,use_multiprocessing = False
     )
     model.save("/device2/local_model/model2.h5")
+    x = history.history
     end = time.time() - start
-    print("Time for Training : "+str(end))
-
+    return (x,object_name)
