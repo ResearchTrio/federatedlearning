@@ -14,13 +14,13 @@ We here implement the Federated Deep Learning architecture to demonstrate the sm
    
    ***
    
-   **Image Dataset Directory Structure**  
+   ## Image Dataset Directory Structure  
    ![Dataset directory structure](https://github.com/ResearchTrio/federatedlearning/blob/main/dataset_directory1.png)  
    ***
    
-   **Run the system using the steps below:**
+   ## Run the system using the steps below:
    ***
-   **Booting Up**
+   #### Booting Up
    1. Run Device 1 using
    ```
    gunicorn ---bind localhost:8001 --timeout 600 wsgi1:app
