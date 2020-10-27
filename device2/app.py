@@ -1,9 +1,15 @@
 
-from flask import Flask, request
+from flask import Flask, request,render_template
 import json
 import requests
 import ast
+import os
 from model_train import train
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+import cv2
 
 app = Flask(__name__)
 
@@ -34,9 +40,9 @@ def send_model():
 		'model': ('model2.h5', file, 'application/octet-stream')
 	}
 	
-	req = requests.post(url='http://localhost:8004/cmodel', 
+	req = requests.post(url='http://localhost:8003/cmodel', 
 						files=files)
-	req1 = requests.post(url='http://localhost:8004/cfile', 
+	req1 = requests.post(url='http://localhost:8003/cfile', 
 						files=files)
 	return render_template("sent.html")
 
