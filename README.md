@@ -32,3 +32,11 @@ We here implement the Federated Deep Learning architecture to demonstrate the sm
    ```
    gunicorn ---bind localhost:8000 --timeout 600 wsgi3:app
    ```
+   This will start the Gunicorn servers for Device 1 ,Device 2 and Main Server
+   
+   ######servers:
+   * Main Server - ```http://localhost:8000/```
+   * Device 1 - ```http://localhost:8001/```
+   * Device 2 - ```http://localhost:8002/```
+   
+   
