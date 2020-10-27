@@ -57,7 +57,7 @@ def getmodel():
 		# 	f.write(cli)
 		
 		print(fname)
-		wfile = open("/home/sarth/flask/Fedlearn-master/secure_aggregator/client_models/"+fname, 'wb')
+		wfile = open("/main_server/client_models/"+fname, 'wb')
 		wfile.write(file)
 			
 		return "Model received!"
@@ -69,7 +69,7 @@ def perform_model_aggregation():
 	model_aggregation()
 	return 'Model aggregation done!\nGlobal model written to persistent storage.'
 
-@app.route('/send_model_secagg')
+"""@app.route('/send_model_secagg')
 def send_agg_to_mainserver():
 	file = open("/home/sarth/flask/Fedlearn-master/secure_aggregator/persistent_storage/agg_model.h5", 'rb')
 	data = {'fname':'agg_model.h5', 'id':'sec_agg'}
@@ -100,18 +100,18 @@ def get_secagg_model():
 		return render_template("recive.html")
 	else:
 		return "No file received!"
-
+"""
 
 @app.route('/send_model_clients')
 def send_agg_to_clients():
 	clients = ''
-	with open('/home/sarth/flask/Fedlearn-master/mainserver/clients.txt', 'r') as f:
+	with open('/main_server/clients.txt', 'r') as f:
 		clients = f.read()
 	clients = clients.split('\n')
 	
 	for c in clients:
 		if c != '':
-			file = open("/home/sarth/flask/Fedlearn-master/mainserver/agg_model/agg_model.h5", 'rb')
+			file = open("/main_server/agg_model/agg_model.h5", 'rb')
 			data = {'fname':'agg_model.h5'}
 			files = {
 				'json': ('json_data', json.dumps(data), 'application/json'),
