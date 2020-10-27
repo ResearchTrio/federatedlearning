@@ -5,7 +5,6 @@ import requests
 import ast
 import os
 from model_train import train
-#Changes
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -33,7 +32,7 @@ def send_status():
 
 @app.route('/sendmodel')
 def send_model():
-	file = open("/home/sarth/flask/Fedlearn-master/device1/local_model/model1.h5", 'rb')
+	file = open("/device1/local_model/model1.h5", 'rb')
 	data = {'fname':'model1.h5', 'id':'http://localhost:8001/'}
 	files = {
 		'json': ('json_data', json.dumps(data), 'application/json'),
@@ -55,7 +54,7 @@ def get_agg_model():
 		fname = fname['fname']
 		print(fname)
 
-		wfile = open("/home/sarth/flask/Fedlearn-master/device1/model_update/"+fname, 'wb')
+		wfile = open("/device1/model_update/"+fname, 'wb')
 		wfile.write(file)
 			
 		return "Model received!"
@@ -65,17 +64,10 @@ def get_agg_model():
 @app.route('/modeltrain')
 def model_train():
 	y,z = train()
-	'''
-	with open("dump.txt") as f:
-		file_content = f.read()
-	'''
-	#return file_content    
-	#return y
 	accuracy = y["accuracy"]
 	loss = y["loss"]
 	val_accuracy = y["val_accuracy"]
 	val_loss = y["val_loss"]
-	#Changes
 	N = len(loss) 
 	plt.style.use("ggplot")
 	plt.figure()
