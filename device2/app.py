@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-	return "Device 2"
+	return render_template('start.html')
 
 @app.route('/sendstatus', methods=['GET'])
 def send_status():
@@ -38,8 +38,7 @@ def send_model():
 						files=files)
 	req1 = requests.post(url='http://localhost:8004/cfile', 
 						files=files)
-	# print(req.text)
-	return "Model sent !"
+	return render_template("sent.html")
 
 @app.route('/aggmodel', methods=['POST'])
 def get_agg_model():
@@ -60,23 +59,27 @@ def get_agg_model():
 
 @app.route('/modeltrain')
 def model_train():
-	train()
-	return "Model trained successfully!"
+	y,z = train()
+	accuracy = y["accuracy"]
+	loss = y["loss"]
+	val_accuracy = y["val_accuracy"]
+	val_loss = y["val_loss"]
+	N = len(loss) 
+	plt.style.use("ggplot")
+	plt.figure()
+	plt.plot(np.arange(0, N), loss, label="train_loss")
+	plt.plot(np.arange(0, N), accuracy, label="train_acc")
+	plt.plot(np.arange(0, N), val_loss,label="val_loss" )
+	plt.plot(np.arange(0, N), val_accuracy, label="val_acc")
+	plt.title("Training Loss and Accuracy for Federated Client 1")
+	plt.xlabel("Epochs")
+	plt.ylabel("Loss/Accuracy")
+	plt.legend(loc="center right")
+	plt.savefig("static/plot1.jpg")
+	image = [i for i in os.listdir('static') if i.endswith('.jpg')][0]
+	
+	return render_template('train.html',epoch = len(loss),loss = loss ,accuracy = accuracy,val_loss = val_loss ,val_accuracy = val_accuracy, name = z, user_image = image)
 
 
 if __name__ == '__main__':
 	app.run(host='localhost', port=8002, debug=False, use_reloader=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
