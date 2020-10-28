@@ -48,7 +48,7 @@ def train():
 		steps_per_epoch=len(train_batches),
 		validation_data=valid_batches,
 		validation_steps=len(valid_batches),
-		epochs=3,
+		epochs=10,
 		verbose=1,use_multiprocessing = False
 		)
 	model.save(cwd + "/local_model/model2.h5")
