@@ -1,6 +1,6 @@
 # Federated Learning
-We here implement the Federated Deep Learning architecture using Flask framework and containerized it using Gunicorn server~~to demonstrate the smart doorbell functionality~~.  
-   It is an attempt to mimic the scenario described in the paper [A Demonstration of Smart Doorbell Design Using FederatedDeep Learning](https://arxiv.org/pdf/2010.09687.pdf).  
+We here implement the Federated Deep Learning architecture using Flask framework and containerized it using Gunicorn server ~~to demonstrate the smart doorbell functionality~~.  
+   It is an attempt to mimic the scenario described in the paper [A Demonstration of Smart Doorbell Design Using Federated Deep Learning](https://arxiv.org/pdf/2010.09687.pdf).  
    
    **Requirements**
    * Python 3.7
@@ -41,13 +41,13 @@ We here implement the Federated Deep Learning architecture using Flask framework
    * Device 2 - ```http://localhost:8002/```
    
    ##### System Working
-   1. First a model is trained locally on the device. Click on the ```Model Training (Locally)``` button to start model training. This button will send ```http://localhost:8001/modeltrain``` and ```http://localhost:8002/modeltrain``` requests respectively to train models locally.
+   1. First a model is trained locally on the device. Click on the **```Model Training (Locally)```** button to start model training. This button will send ```http://localhost:8001/modeltrain``` and ```http://localhost:8002/modeltrain``` requests respectively to train models locally.
    
-   2. Once the models are trained click on ```Send Model to Federated Server``` button. This will send the client models trained on the local devices to the main server using ```http://localhost:8001/sendmodel``` an ```http://localhost:8001/sendmodel``` requests respectively.
+   2. Once the models are trained, click on  **```Send Model to Federated Server```** button. This will send the client models trained on the local devices to the main server using ```http://localhost:8001/sendmodel``` an ```http://localhost:8001/sendmodel``` requests respectively.
    
-   3. On sending the local models they are stored into the Main Server. Now click on ```Aggregate Local Models``` button that sends ```http://localhost:8000/aggregate_models``` request to start model aggregation of the locally trained models.
+   3. The trained models sent by the local devices are stored into the Main Server. Now click on **```Aggregate Local Models```** button that sends ```http://localhost:8000/aggregate_models``` request to start model aggregation of the locally trained models.
    
-   4. Now, once the model aggregation is done click on the ```Send Aggregated Models to Federated Clients``` button that sends ```http://localhost:8000/send_model_clients``` request to send the global aggregated model back to the local devices.
+   4. Now, once the model aggregation is done, click on the **```Send Aggregated Models to Federated Clients```** button that sends ```http://localhost:8000/send_model_clients``` request to send the global aggregated model back to the local devices.
    
    5. Once the complete iteration is finished go back to step one for the next iteration of model training and aggregation for improving the accuracy of the aggregated model.
    
