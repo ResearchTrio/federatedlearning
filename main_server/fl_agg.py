@@ -7,6 +7,8 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense
 import os
 
+cwd = os.getcwd()
+    
 def scale_model_weights(weight, scalar):
     '''function for scaling a models weights'''
     weight_final = []
@@ -26,7 +28,7 @@ def sum_scaled_weights(scaled_weight_list):
     return avg_grad
 
 def fl_average():
-    client_models_path = os.listdir("/main_server/client_models/")
+    client_models_path = os.listdir(cwd + "/client_models/")
        
     scaled_local_weight_list = []
     
@@ -34,7 +36,7 @@ def fl_average():
         print("Loading Model...")
         print(path)
        
-        local_model = tf.keras.models.load_model("/main_server/client_models/"+path)
+        local_model = tf.keras.models.load_model(cwd + "/client_models/"+path)
         local_model.compile(Adam(lr=.0001), loss='categorical_crossentropy', metrics=['accuracy'])
         local_weights= local_model.get_weights()
         scaling_factor = 1/3
@@ -63,7 +65,9 @@ def build_model(weights):
     return global_model
 
 def save_agg_model(model):
-    model.save("/main_server/agg_model/agg_model.h5")
+    if(os.path.isdir(cwd + '/agg_model')):
+        os.mkdir(cwd + '/agg_model')
+    model.save(cwd + "/agg_model/agg_model.h5")
     print("Model written to storage!")
 
 def model_aggregation():
