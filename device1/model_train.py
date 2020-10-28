@@ -19,7 +19,7 @@ import pickle
 
 def train():
 	cwd = os.getcwd()
-	if(os.path.isdir(cwd + '/local_model')):
+	if(!os.path.isdir(cwd + '/local_model')):
 		os.mkdir(cwd + '/local_model')
 	object_name = "object_name"
 	main_path = '/image dataset path'
