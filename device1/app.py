@@ -12,6 +12,8 @@ import numpy as np
 import cv2
 app = Flask(__name__)
 
+cwd = os.getcwd()
+
 @app.route('/')
 def hello():
 	return render_template('start.html')
@@ -32,20 +34,22 @@ def send_status():
 
 @app.route('/sendmodel')
 def send_model():
-	file = open("/device1/local_model/model1.h5", 'rb')
+	file = open(cwd + "/local_model/model1.h5", 'rb')
 	data = {'fname':'model1.h5', 'id':'http://localhost:8001/'}
 	files = {
 		'json': ('json_data', json.dumps(data), 'application/json'),
 		'model': ('model1.h5', file, 'application/octet-stream')
 	}
 
-	req = requests.post(url='http://localhost:8004/cmodel', 
+	req = requests.post(url='http://localhost:8000/cmodel', 
 						files=files)
 	# print(req.text)
 	return render_template("sent.html")
 
 @app.route('/aggmodel', methods=['POST'])
 def get_agg_model():
+	if(!os.path.isdir(cwd + '/model_update')):
+		os.mkdir(cwd + '/model_update')
 	if request.method == 'POST':
 		file = request.files['model'].read()
 		fname = request.files['json'].read()
@@ -54,7 +58,7 @@ def get_agg_model():
 		fname = fname['fname']
 		print(fname)
 
-		wfile = open("/device1/model_update/"+fname, 'wb')
+		wfile = open(cwd + "/model_update/"+fname, 'wb')
 		wfile.write(file)
 			
 		return "Model received!"
