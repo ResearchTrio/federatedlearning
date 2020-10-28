@@ -18,7 +18,7 @@ def client_status():
 	if request.method == 'POST':
 		client_port = request.json['client_id']
 		
-		with open('/main_server/clients.txt', 'a+') as f:
+		with open(cwd + '/clients.txt', 'a+') as f:
 			f.write('http://localhost:' + client_port + '/\n')
 
 		print(client_port)
@@ -61,7 +61,7 @@ def getmodel():
 		# 	f.write(cli)
 		
 		print(fname)
-		wfile = open("/client_models/"+fname, 'wb')
+		wfile = open(cwd + "/client_models/"+fname, 'wb')
 		wfile.write(file)
 			
 		return "Model received!"
