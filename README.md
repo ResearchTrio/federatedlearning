@@ -1,5 +1,5 @@
 # Federated Learning
-We here implement the Federated Deep Learning architecture using Flask framework and containerized it using Gunicorn server.  
+We here implement the Federated Deep Learning Architecture using Flask framework and containerized it using Gunicorn server.  
    It is an attempt to mimic the scenario described in the paper [A Demonstration of Smart Doorbell Design Using Federated Deep Learning](https://arxiv.org/pdf/2010.09687.pdf).  
    
    **Requirements**
@@ -45,9 +45,9 @@ We here implement the Federated Deep Learning architecture using Flask framework
    
    2. Once the models are trained, click on  **```Send Model to Federated Server```** button. This will send the client models trained on the local devices to the main server using ```http://localhost:8001/sendmodel``` an ```http://localhost:8001/sendmodel``` requests respectively.
    
-   3. The trained models sent by the local devices are stored into the Main Server. Now click on **```Aggregate Local Models```** button that sends ```http://localhost:8000/aggregate_models``` request to start model aggregation of the locally trained models.
+   3. The trained models sent by the local devices are stored on the Main Server. Now click on **```Aggregate Local Models```** button that sends ```http://localhost:8000/aggregate_models``` request to start model aggregation of the locally trained models.
    
-   4. Now, once the model aggregation is done, click on the **```Send Aggregated Models to Federated Clients```** button that sends ```http://localhost:8000/send_model_clients``` request to send the global aggregated model back to the local devices.
+   4. Now, once the model aggregation is done, click on **```Send Aggregated Models to Federated Clients```** button that sends ```http://localhost:8000/send_model_clients``` request to send the global aggregated model back to the local devices.
    
    5. Once the complete iteration is finished go back to step one for the next iteration of model training and aggregation to improve the aggregated model.
    
