@@ -1,5 +1,5 @@
 # Federated Learning
-We here implement the Federated Deep Learning architecture using Flask framework and containerized it using Gunicorn server ~~to demonstrate the smart doorbell functionality~~.  
+We here implement the Federated Deep Learning architecture using Flask framework and containerized it using Gunicorn server.  
    It is an attempt to mimic the scenario described in the paper [A Demonstration of Smart Doorbell Design Using Federated Deep Learning](https://arxiv.org/pdf/2010.09687.pdf).  
    
    **Requirements**
@@ -49,5 +49,5 @@ We here implement the Federated Deep Learning architecture using Flask framework
    
    4. Now, once the model aggregation is done, click on the **```Send Aggregated Models to Federated Clients```** button that sends ```http://localhost:8000/send_model_clients``` request to send the global aggregated model back to the local devices.
    
-   5. Once the complete iteration is finished go back to step one for the next iteration of model training and aggregation for improving the accuracy of the aggregated model.
+   5. Once the complete iteration is finished go back to step one for the next iteration of model training and aggregation to improve the aggregated model.
    
