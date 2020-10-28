@@ -19,10 +19,10 @@ import pickle
 
 def train():
 	cwd = os.getcwd()
-	if(!os.path.isdir(cwd + '/local_model')):
+	if os.path.isdir(cwd + '/local_model') == False:
 		os.mkdir(cwd + '/local_model')
 	object_name = "object_name"
-	main_path = '/image dataset path'
+	main_path = '/image_dataset_path'
 	train_path = main_path+'/train'
 	valid_path = main_path+'/valid'
 	test_path = main_path+'/test'
@@ -55,5 +55,4 @@ def train():
 	x = history.history
 	end = time.time() - start
 	return (x,object_name)
-
 
