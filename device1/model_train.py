@@ -18,6 +18,9 @@ import random
 import pickle
 
 def train():
+	cwd = os.getcwd()
+	if(os.path.isdir(cwd + '/local_model')):
+		os.mkdir(cwd + '/local_model')
 	object_name = "object_name"
 	main_path = '/image dataset path'
 	train_path = main_path+'/train'
@@ -48,7 +51,7 @@ def train():
 			  epochs=10,
 			  verbose=1,use_multiprocessing = False
 	)
-	model.save("/device1/local_model/model1.h5")
+	model.save(cwd + "/local_model/model1.h5")
 	x = history.history
 	end = time.time() - start
 	return (x,object_name)
