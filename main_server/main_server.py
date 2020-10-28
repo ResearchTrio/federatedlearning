@@ -5,6 +5,8 @@ from fl_agg import model_aggregation
 
 app = Flask(__name__)
 
+cwd = os.getcwd()
+
 @app.route('/')
 def hello():
 	return "Server running !"
@@ -44,6 +46,8 @@ def filename():
 		
 @app.route('/cmodel', methods=['POST'])
 def getmodel():
+	if(!os.path.isdir(cwd + '/client_models')):
+		os.mkdir(cwd + '/client_models')
 	if request.method == 'POST':
 		file = request.files['model'].read()
 		fname = request.files['json'].read()
@@ -57,7 +61,7 @@ def getmodel():
 		# 	f.write(cli)
 		
 		print(fname)
-		wfile = open("/main_server/client_models/"+fname, 'wb')
+		wfile = open("/client_models/"+fname, 'wb')
 		wfile.write(file)
 			
 		return "Model received!"
@@ -105,13 +109,13 @@ def get_secagg_model():
 @app.route('/send_model_clients')
 def send_agg_to_clients():
 	clients = ''
-	with open('/main_server/clients.txt', 'r') as f:
+	with open(cwd + '/clients.txt', 'r') as f:
 		clients = f.read()
 	clients = clients.split('\n')
 	
 	for c in clients:
 		if c != '':
-			file = open("/main_server/agg_model/agg_model.h5", 'rb')
+			file = open(cwd + "/agg_model/agg_model.h5", 'rb')
 			data = {'fname':'agg_model.h5'}
 			files = {
 				'json': ('json_data', json.dumps(data), 'application/json'),
