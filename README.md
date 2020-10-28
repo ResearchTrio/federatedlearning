@@ -37,9 +37,12 @@ We here implement the Federated Deep Learning Architecture using Flask framework
    
    ##### Servers:
    * Main Server - ```http://localhost:8000/```
+   
    ![Main Server Start](https://github.com/ResearchTrio/federatedlearning/blob/main/server_start.png)
+   
    * Device 1 - ```http://localhost:8001/```
    * Device 2 - ```http://localhost:8002/```
+   
    ![Device Start](https://github.com/ResearchTrio/federatedlearning/blob/main/device_start.png)
    
    ##### System Working
