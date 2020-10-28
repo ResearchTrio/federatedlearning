@@ -74,39 +74,6 @@ def perform_model_aggregation():
 	model_aggregation()
 	return render_template("agg.html")
 
-"""@app.route('/send_model_secagg')
-def send_agg_to_mainserver():
-	file = open("/main_server/agg_model/agg_model.h5", 'rb')
-	data = {'fname':'agg_model.h5', 'id':'sec_agg'}
-	files = {
-		'json': ('json_data', json.dumps(data), 'application/json'),
-		'model': ('agg_model.h5', file, 'application/octet-stream')
-	}
-	
-	print('aggmodel')
-	req = requests.post(url='http://localhost:8000/secagg_model', files=files)
-	print(req.status_code)
-	
-	return render_template("recive.html")
-	
-@app.route('/secagg_model', methods=['POST'])
-def get_secagg_model():
-	if request.method == 'POST':
-		file = request.files['model'].read()
-		fname = request.files['json'].read()
-
-		fname = ast.literal_eval(fname.decode("utf-8"))
-		cli = fname['id']+'\n'
-		fname = fname['fname']
-
-		wfile = open("/main_server/agg_model/"+fname, 'wb')
-		wfile.write(file)
-			
-		return render_template("recive.html")
-	else:
-		return "No file received!"
-"""
-
 @app.route('/send_model_clients')
 def send_agg_to_clients():
 	clients = ''
