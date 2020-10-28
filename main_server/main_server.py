@@ -1,6 +1,7 @@
 from flask import Flask, request,render_template
 import requests, json
 import ast
+import os
 from fl_agg import model_aggregation
 
 app = Flask(__name__)
@@ -46,7 +47,7 @@ def filename():
 		
 @app.route('/cmodel', methods=['POST'])
 def getmodel():
-	if(!os.path.isdir(cwd + '/client_models')):
+	if os.path.isdir(cwd + '/client_models') == False:
 		os.mkdir(cwd + '/client_models')
 	if request.method == 'POST':
 		file = request.files['model'].read()
@@ -133,18 +134,3 @@ def send_agg_to_clients():
 
 if __name__ == '__main__':
 	app.run(host='localhost', port=8000, debug=False, use_reloader=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
