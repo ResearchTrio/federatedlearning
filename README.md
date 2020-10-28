@@ -21,6 +21,7 @@ We here implement the Federated Deep Learning Architecture using Flask framework
    
    ## Run the system using the steps below:  
    ### Booting Up
+   ![Device Start](https://github.com/ResearchTrio/federatedlearning/blob/main/device_start.png)
    1. Navigate to device1 directory and run Device 1 using
    ```
    gunicorn ---bind localhost:8001 --timeout 600 wsgi1:app
@@ -29,6 +30,7 @@ We here implement the Federated Deep Learning Architecture using Flask framework
    ```
    gunicorn ---bind localhost:8002 --timeout 600 wsgi2:app
    ```
+   ![Main Server Start](https://github.com/ResearchTrio/federatedlearning/blob/main/server_start.png)
    3. Navigate to main_server directory and run Main Server using
    ```
    gunicorn ---bind localhost:8000 --timeout 600 wsgi3:app
