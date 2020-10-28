@@ -21,7 +21,6 @@ We here implement the Federated Deep Learning Architecture using Flask framework
    
    ## Run the system using the steps below:  
    ### Booting Up
-   ![Device Start](https://github.com/ResearchTrio/federatedlearning/blob/main/device_start.png)
    1. Navigate to device1 directory and run Device 1 using
    ```
    gunicorn ---bind localhost:8001 --timeout 600 wsgi1:app
@@ -30,7 +29,6 @@ We here implement the Federated Deep Learning Architecture using Flask framework
    ```
    gunicorn ---bind localhost:8002 --timeout 600 wsgi2:app
    ```
-   ![Main Server Start](https://github.com/ResearchTrio/federatedlearning/blob/main/server_start.png)
    3. Navigate to main_server directory and run Main Server using
    ```
    gunicorn ---bind localhost:8000 --timeout 600 wsgi3:app
@@ -39,8 +37,10 @@ We here implement the Federated Deep Learning Architecture using Flask framework
    
    ##### Servers:
    * Main Server - ```http://localhost:8000/```
+   ![Main Server Start](https://github.com/ResearchTrio/federatedlearning/blob/main/server_start.png)
    * Device 1 - ```http://localhost:8001/```
    * Device 2 - ```http://localhost:8002/```
+   ![Device Start](https://github.com/ResearchTrio/federatedlearning/blob/main/device_start.png)
    
    ##### System Working
    1. First a model is trained locally on the device. Click on the **```Model Training (Locally)```** button to start model training. This button will send ```http://localhost:8001/modeltrain``` and ```http://localhost:8002/modeltrain``` requests respectively to train models locally.
