@@ -1,13 +1,11 @@
 Initial 
-1. Device1, Device2 - modeltrain
-2. Device1, Device2 - sendstatus
-3. Device1, Device2 - sendmodel
-4. Main_server - aggregation
-5. main_server - sendagg
+1. device1, device2 - model training
+2. device1, device2 - send model
+3. main_server - model aggregation
+4. main_server - send aggregated model
 
 Repeat...
-1. Device1, Device2 - modeltrain
-2. Device1, Device2 - sendstatus
-3. Device1, Device2 - sendmodel
-4. main_server - aggregation
-5. main_server - sendagg
+1. device1, device2 - model training
+2. device1, device2 - send model
+3. main_server - model aggregation
+4. main_server - send aggregated model
