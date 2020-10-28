@@ -23,15 +23,15 @@ We here implement the Federated Deep Learning Architecture using Flask framework
    ### Booting Up
    1. Navigate to device1 directory and run Device 1 using
    ```
-   gunicorn ---bind localhost:8001 --timeout 600 wsgi1:app
+   gunicorn --bind localhost:8001 --timeout 600 wsgi1:app
    ```
    2. Navigate to device2 directory and run Device 2 using
    ```
-   gunicorn ---bind localhost:8002 --timeout 600 wsgi2:app
+   gunicorn --bind localhost:8002 --timeout 600 wsgi2:app
    ```
    3. Navigate to main_server directory and run Main Server using
    ```
-   gunicorn ---bind localhost:8000 --timeout 600 wsgi3:app
+   gunicorn --bind localhost:8000 --timeout 600 wsgi3:app
    ```
    This will start the Gunicorn servers for Device 1 ,Device 2 and Main Server
    
