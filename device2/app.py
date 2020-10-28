@@ -98,7 +98,7 @@ def model_train():
 	plt.xlabel("Epochs")
 	plt.ylabel("Loss/Accuracy")
 	plt.legend(loc="center right")
-	plt.savefig("static/plot1.jpg")
+	plt.savefig(cwd + "/static/plot1.jpg")
 	image = [i for i in os.listdir('static') if i.endswith('.jpg')][0]
 	
 	return render_template('train.html',epoch = len(loss),loss = loss ,accuracy = accuracy,val_loss = val_loss ,val_accuracy = val_accuracy, name = z, user_image = image)
