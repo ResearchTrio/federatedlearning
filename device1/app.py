@@ -43,6 +43,9 @@ def send_model():
 
 	req = requests.post(url='http://localhost:8000/cmodel', 
 						files=files)
+	req1 = requests.post(url='http://localhost:8000/cfile', 
+						files=files)
+
 	# print(req.text)
 	return render_template("sent.html")
 
@@ -67,6 +70,8 @@ def get_agg_model():
 
 @app.route('/modeltrain')
 def model_train():
+	if(!os.path.isdir(cwd + '/static')):
+		os.mkdir(cwd + '/static')
 	y,z = train()
 	accuracy = y["accuracy"]
 	loss = y["loss"]
