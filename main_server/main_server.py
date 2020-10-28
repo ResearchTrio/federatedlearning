@@ -10,7 +10,7 @@ cwd = os.getcwd()
 
 @app.route('/')
 def hello():
-	return "Server running !"
+	return render_template("recive.html")
 
 @app.route('/clientstatus', methods=['GET','POST'])
 def client_status():
@@ -72,7 +72,7 @@ def getmodel():
 @app.route('/aggregate_models')
 def perform_model_aggregation():
 	model_aggregation()
-	return 'Model aggregation done!\nGlobal model written to persistent storage.'
+	return render_template("agg.html")
 
 """@app.route('/send_model_secagg')
 def send_agg_to_mainserver():
@@ -127,7 +127,7 @@ def send_agg_to_clients():
 			req = requests.post(url=c+'aggmodel', files=files)
 			print(req.status_code)
 	
-	return "Aggregated model sent !"
+	return render_template("sent.html")
 
 
 
