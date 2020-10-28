@@ -65,7 +65,7 @@ def build_model(weights):
     return global_model
 
 def save_agg_model(model):
-    if(os.path.isdir(cwd + '/agg_model')):
+    if os.path.isdir(cwd + '/agg_model') == False:
         os.mkdir(cwd + '/agg_model')
     model.save(cwd + "/agg_model/agg_model.h5")
     print("Model written to storage!")
@@ -74,16 +74,3 @@ def model_aggregation():
     weights = fl_average()
     model = build_model(weights)
     save_agg_model(model)
-
-
-
-
-
-
-
-
-
-
-
-
-
