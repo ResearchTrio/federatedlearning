@@ -19,7 +19,7 @@ cwd = os.getcwd()
 def hello():
 	return render_template('start.html')
 
-@app.route('/sendstatus', methods=['GET'])
+'''@app.route('/sendstatus', methods=['GET'])
 def send_status():
 	api_url = 'http://localhost:8000/clientstatus'
 
@@ -32,9 +32,20 @@ def send_status():
 		print("yeah")
 	
 	return "Status OK sent !"
+'''
 
 @app.route('/sendmodel')
 def send_model():
+	api_url = 'http://localhost:8000/clientstatus'
+
+	data = {'client_id': '8002'}
+	print(data)
+
+	r = requests.post(url=api_url, json=data)
+	print(r, r.status_code, r.reason, r.text)
+	if r.status_code == 200:
+		print("yeah")
+		
 	file = open(cwd + "/local_model/model2.h5", 'rb')
 	data = {'fname':'model2.h5', 'id':'http://localhost:8002/'}
 	files = {
