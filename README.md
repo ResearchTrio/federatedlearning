@@ -1,5 +1,5 @@
 # Federated Learning
-We here implement the Federated Deep Learning Architecture using Flask framework and containerized it using Gunicorn server.  
+We here implement the Federated Deep Learning Architecture using Flask framework and containerized it using Gunicorn server. We have used transfer learning on pre-trained MobileNet model which is a lightweight deep neural network with fewer parameters and higher classification accuracy.  
    It is an attempt to mimic the scenario described in the paper [A Demonstration of Smart Doorbell Design Using Federated Deep Learning](https://arxiv.org/pdf/2010.09687.pdf).  
    
    **Requirements**
