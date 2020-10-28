@@ -36,7 +36,7 @@ def fl_average():
         print("Loading Model...")
         print(path)
        
-        local_model = tf.keras.models.load_model(cwd + "/client_models/"+path)
+        local_model = tf.keras.models.load_model(cwd + "/client_models/" + path)
         local_model.compile(Adam(lr=.0001), loss='categorical_crossentropy', metrics=['accuracy'])
         local_weights= local_model.get_weights()
         scaling_factor = 1/3
