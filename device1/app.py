@@ -62,7 +62,7 @@ def send_model():
 
 @app.route('/aggmodel', methods=['POST'])
 def get_agg_model():
-	if(!os.path.isdir(cwd + '/model_update')):
+	if os.path.isdir(cwd + '/model_update') == False:
 		os.mkdir(cwd + '/model_update')
 	if request.method == 'POST':
 		file = request.files['model'].read()
@@ -81,7 +81,7 @@ def get_agg_model():
 
 @app.route('/modeltrain')
 def model_train():
-	if(!os.path.isdir(cwd + '/static')):
+	if os.path.isdir(cwd + '/static') == False:
 		os.mkdir(cwd + '/static')
 	y,z = train()
 	accuracy = y["accuracy"]
@@ -106,21 +106,3 @@ def model_train():
 
 if __name__ == '__main__':
 	app.run(host='localhost', port=8001, debug=False, use_reloader=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
